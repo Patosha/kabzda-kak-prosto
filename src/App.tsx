@@ -1,10 +1,12 @@
 import React from 'react';
 
 import './App.css';
+import {Accordion} from "./components/Accordion/Accordion";
 
 function App() {
     return (
         <div>
+            <Accordion/>
             <AccordionTitle/>
             <AccordionBody/>
             <Star/>
@@ -41,5 +43,7 @@ const AccordionBody = () => {
         </ul>
     )
 }
+
+
 
 export default App;
