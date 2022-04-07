@@ -7,19 +7,29 @@ import {Rating} from "./components/Accordion/Rating/Rating";
 function App() {
     return (
         <div>
-            <AppTitle/>
-            <Rating/>
-            <Accordion/>
-            <Rating/>
+            <PageTitle title={'This is APP component'}/>
+            <PageTitle title={'My friends'}/>
+            <Accordion titleValue={'Menu'}/>
+            <Accordion titleValue={'Users'}/>
+            <Rating value={0}/>
+            <Rating value={1}/>
+            <Rating value={2}/>
+            <Rating value={3}/>
+            <Rating value={4}/>
+            <Rating value={5}/>
         </div>
     );
 }
 
-const AppTitle = () => {
+type PageTitlePropsType = {
+    title: string
+}
+
+const PageTitle = (props: PageTitlePropsType) => {
     return (
-        <div>
-            This is APP component
-        </div>
+        <h1>
+            {props.title}
+        </h1>
     )
 }
 
