@@ -6,23 +6,32 @@ type UncontrolledAccordionPropsType = {
 
 export const UncontrolledAccordion = (props: UncontrolledAccordionPropsType) => {
 
-    const [on, setOn] = useState(false)
+    const [collapsed, setCollapsed] = useState(false)
+
     return (
         <div>
             <AccordionTitle title={props.titleValue}/>
-            {!props.collapsed && <AccordionBody/>}
+
+            <button onClick={()=>{setCollapsed(!collapsed)}}>
+                Toggle
+            </button>
+
+            {collapsed && <AccordionBody/>}
         </div>
     ) // если не collapsed(не свёрнут), то тонда пакажи AccordionBody
 }
 
 type AccordionTitlePropsType = {
     title: string
+
 }
 
 export const AccordionTitle = (props: AccordionTitlePropsType) => {
     return (
         <div>
-            <h3>{props.title}</h3>
+            <h3>
+                {props.title}
+            </h3>
         </div>
     )
 }
