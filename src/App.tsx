@@ -1,15 +1,17 @@
 import React, {useState} from 'react';
 import './App.css';
 import {Rating, RatingValueType} from "./components/Accordion/Rating/Rating";
-import {OnOff} from "./components/OnOff/OnOff";
 import {UncontrolledAccordion} from "./components/Accordion/Rating/UncontrolledAccordion/UncontrolledAccordion";
-import { UncontrolledRating } from './components/Accordion/Rating/UncontrolledRating/UncontrolledRating';
+import {UncontrolledRating} from './components/Accordion/Rating/UncontrolledRating/UncontrolledRating';
 import {Accordion} from "./components/Accordion/Accordion";
+import {UncontrolledOnOff} from './components/OnOff/UncontrolledOnOff';
+import {OnOff} from "./components/OnOff/OnOff";
 
 function App() {
 
     const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
     const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
+    const [on, setOn] = useState<boolean>(false)
 
     return (
         <div className={'App'}>
@@ -20,7 +22,9 @@ function App() {
             <Accordion
                 titleValue={'Users'}
                 collapsed={accordionCollapsed}
-                callBack={()=>{setAccordionCollapsed(!accordionCollapsed)}}
+                callBack={() => {
+                    setAccordionCollapsed(!accordionCollapsed)
+                }}
             />
 
             <UncontrolledAccordion titleValue={'Menu'}/>
@@ -29,7 +33,12 @@ function App() {
 
             <UncontrolledRating/>
 
-            <OnOff/>
+            <OnOff
+                on={on}
+                callBack={(on) => {setOn(on)}}
+            />
+
+            <UncontrolledOnOff onChange={setOn}/> {on.toString()}
         </div>
     );
 }

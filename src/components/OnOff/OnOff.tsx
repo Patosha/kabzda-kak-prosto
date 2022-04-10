@@ -1,23 +1,20 @@
-import {useState} from "react";
-
 type OnOffPropsType = {
-    // nameButton: string
-    // on: boolean
+    on: boolean
+    callBack: (on: boolean) => void
 }
 
 export const OnOff = (props: OnOffPropsType) => {
-    const [on, setOn] = useState(false)
 
     const onStyle = {
         padding: '10px',
         marginRight: '10px',
-        backgroundColor: on ? 'green' : 'white',
+        backgroundColor: props.on ? 'green' : 'white',
         transition: 'ease-in-out .5s'
     };
     const offStyle = {
         padding: '10px',
         marginRight: '10px',
-        backgroundColor: on ? 'white' : 'red',
+        backgroundColor: props.on ? 'white' : 'red',
         transition: 'ease-in-out .5s'
     };
     const indicatorStyle = {
@@ -27,18 +24,18 @@ export const OnOff = (props: OnOffPropsType) => {
         borderRadius: '100%',
         border: '1px solid black',
         transition: 'ease-in-out .5s',
-        backgroundColor: on ? 'green' : 'red'
+        backgroundColor: props.on ? 'green' : 'red'
     };
 
     return (
         <div>
             <button style={onStyle} onClick={() => {
-                setOn(true)
+                props.callBack(true)
             }}>
                 on
             </button>
             <button style={offStyle} onClick={() => {
-                setOn(false)
+                props.callBack(false)
             }}>
                 off
             </button>
