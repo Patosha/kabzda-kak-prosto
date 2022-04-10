@@ -17,11 +17,13 @@ function App() {
             <PageTitle title={'This is APP component'}/>
             <PageTitle title={'My friends'}/>
 
-
-            <Accordion titleValue={'Users'} collapsed={accordionCollapsed}/>
+            <Accordion
+                titleValue={'Users'}
+                collapsed={accordionCollapsed}
+                callBack={()=>{setAccordionCollapsed(!accordionCollapsed)}}
+            />
 
             <UncontrolledAccordion titleValue={'Menu'}/>
-
 
             <Rating value={ratingValue} callBack={setRatingValue}/>
 
