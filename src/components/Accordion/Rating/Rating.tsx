@@ -22,8 +22,8 @@ export const Rating = (props: RatingPropsType) => {
 
 type StarPropsType = {
     selected: boolean
-    callBack: (value: RatingValueType) => void
     value: RatingValueType
+    callBack: (value: RatingValueType) => void
 }
 
 const Star = (props: StarPropsType) => {
