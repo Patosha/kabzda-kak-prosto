@@ -1,31 +1,38 @@
 import React from "react";
 
+export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5;
+
 type RatingPropsType = {
-    value: 0 | 1 | 2 | 3 | 4 | 5
+    value: RatingValueType
+    callBack: (value: RatingValueType) => void
 }
 
 export const Rating = (props: RatingPropsType) => {
 
     return (
         <div>
-            <Star selected={props.value > 0}/>
-            <Star selected={props.value > 1}/>
-            <Star selected={props.value > 2}/>
-            <Star selected={props.value > 3}/>
-            <Star selected={props.value > 4}/>
+            <Star selected={props.value > 0} callBack={props.callBack} value={1}/>
+            <Star selected={props.value > 1} callBack={props.callBack} value={2}/>
+            <Star selected={props.value > 2} callBack={props.callBack} value={3}/>
+            <Star selected={props.value > 3} callBack={props.callBack} value={4}/>
+            <Star selected={props.value > 4} callBack={props.callBack} value={5}/>
         </div>
     )
 }
 
 type StarPropsType = {
     selected: boolean
+    callBack: (value: RatingValueType) => void
+    value: RatingValueType
 }
 
 const Star = (props: StarPropsType) => {
 
-    if (props.selected === true) {
-        return <span><b>star</b> </span>
-    } else {
-        return <span>star </span>
-    }
+    return (
+        <span onClick={() => {
+            props.callBack(props.value)
+        }}>
+         {props.selected ? <b>star </b> : 'star '}
+        </span>
+    )
 }
